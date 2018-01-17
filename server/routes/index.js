@@ -1,20 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const cryptoController = require('./cryptoController');
+const cryptoController = require('../controllers/cryptoController');
+const homeController = require('../controllers/homeController');
+const { catchErrors } = require('../handlers/errorHandlers');
 
-function catchAsyncErrors(fn) {
-    return (req, res, next) => {
-        const routePromise = fn(req, res, next);
-        if (routePromise.catch) {
-            routePromise.catch(err => next(err));
-        }
-    }
-}
+//home routes
+router.get('/', homeController.index);
 
-router.get('/', (req, res, next) => {
-    return res.send("Crypto predictor running");
-});
-router.get('/crypto', catchAsyncErrors(cryptoController.getCrypto));
-
+//Crypto routes
+router.get('/crypto', catchErrors(cryptoController.getAllCryptos));
+router.get('/crypto/:pair', catchErrors(cryptoController.getCrypto));
 
 module.exports = router;
