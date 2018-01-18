@@ -5,9 +5,8 @@ const pairs = [];
 function updateCryptoPrice(pairs) {
     return function () {
         pairs.forEach(pair => {
-            firebase.database().ref(`/crypto/${pair}/data`).set({
-                latestValue: Math.random() * 15000
-            });
+            const data = { latestValue: Math.random() * 15000 };
+            firebase.database().ref(`/crypto/${pair}/data`).set(data);
         });
     }
 }

@@ -2,10 +2,9 @@ const path = require('path');
 const fs = require('fs');
 
 function execute() {
-    const normalizedPath = __dirname;
-    fs.readdirSync(normalizedPath).forEach(function (file) {
+    fs.readdirSync(__dirname).forEach(function (file) {
         if (file.startsWith('index')) return;
-        const taskPath = path.join(normalizedPath, file);
+        const taskPath = path.join(__dirname, file);
         const task = require(taskPath);
         task.execute();
     });

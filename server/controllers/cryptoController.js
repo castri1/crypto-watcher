@@ -7,5 +7,6 @@ exports.getAllCryptos = async (req, res, next) => {
 
 exports.getCrypto = async (req, res, next) => {
     const snapshot = await firebase.database().ref(`/crypto/${req.params.pair}`).once('value');
+    if (!snapshot) return next();
     return res.json(snapshot.val());
 };

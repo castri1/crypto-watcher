@@ -8,7 +8,7 @@ const { catchErrors } = require('../handlers/errorHandlers');
 router.get('/', homeController.index);
 
 //Crypto routes
-router.get('/crypto', catchErrors(cryptoController.getAllCryptos));
-router.get('/crypto/:pair', catchErrors(cryptoController.getCrypto));
+router.get('/cryptos', catchErrors(cryptoController.getAllCryptos));
+router.get('/cryptos/:pair', catchErrors(cryptoController.getCrypto));
 
 module.exports = router;
