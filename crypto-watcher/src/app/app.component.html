@@ -1,6 +1,12 @@
-<mat-card *ngFor="let message of messages">
-  <mat-card-title>{{message}}</mat-card-title>
-  <mat-card-content>
-    This is a message
-  </mat-card-content>
+<mat-card *ngFor="let message of messages | async">
+  <mat-card-header>
+    <mat-card-title>{{message.name}}</mat-card-title>
+    <mat-card-subtitle>{{message.data.latestValue}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-actions>
+    <button mat-button>LIKE</button>
+    <button mat-button>SHARE</button>
+  </mat-card-actions>
 </mat-card>
+
+<!-- <p>{{messages}}</p> -->
