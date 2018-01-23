@@ -16,14 +16,23 @@ function scheduler(pairs) {
     refreshInterval = setInterval(updateCryptoPrice(pairs), 2000);
 }
 
-function getCurrencies(snapshot) {
+function createCurrency(currencyData) {
+    const currency = {
+        data: { latestValue: Math.random() * 15000 },
+        name: currencyData.currencyName
+    };
+    firebase.database().ref(`/crypto/${currencyData.pairName}`).set(currency);
+}
+
+function onChildAdded(snapshot) {
     const currency = snapshot.val();
-    pairs.push(currency.name);
+    createCurrency(currency);
+    pairs.push(currency.pairName);
     scheduler(pairs);
 }
 
 function execute() {
-    firebase.database().ref('/currencies').on('child_added', getCurrencies);
+    firebase.database().ref('/currencies').on('child_added', onChildAdded);
 }
 
 module.exports = {
