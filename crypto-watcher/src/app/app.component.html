@@ -1,18 +1,14 @@
-<mat-card *ngFor="let currency of currencies | async">
-  <mat-card-header>
-    <mat-card-title>
-      <h2>
-          {{currency.name}}
-      </h2>
-    </mat-card-title>
-    <mat-card-subtitle >{{currency.data.latestValue | currency}}</mat-card-subtitle>
-  </mat-card-header>
-  <mat-card-actions>
-    <button mat-raised-button color="primary">
-      LIKE
-    </button>
-    <button mat-raised-button>SHARE</button>
-  </mat-card-actions>
+<mat-card>
+  <mat-card-title>
+    <h1>The Crypto Watcher</h1>
+  </mat-card-title>
 </mat-card>
 
-<!-- <p>{{messages}}</p> -->
+<mat-tab-group>
+  <mat-tab label="New Currency">
+    <new-currency (save)="onSave($event)"></new-currency>
+  </mat-tab>
+  <mat-tab label="Currencies">
+    <currency-list [currencies]="currencies"></currency-list>
+  </mat-tab>
+</mat-tab-group>

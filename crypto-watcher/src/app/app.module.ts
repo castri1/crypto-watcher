@@ -3,6 +3,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { AppMaterialModuleModule } from './app-material-module/app-material-module.module';
 import { AppComponent } from './app.component';
+import { CurrencyComponent, CurrencyListComponent } from './components';
+import { FormsModule } from '@angular/forms';
 import { AngularFireModule } from 'angularfire2';
 import {AngularFireDatabaseModule, AngularFireDatabase} from 'angularfire2/database';
 
@@ -19,12 +21,15 @@ var firebaseConfig = {
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CurrencyComponent,
+    CurrencyListComponent
   ],
   imports: [
     BrowserModule,
     AppMaterialModuleModule,
     BrowserAnimationsModule,
+    FormsModule,
     AngularFireModule.initializeApp(firebaseConfig),  // Add this
     AngularFireDatabaseModule                            // And this
   ],

@@ -1,0 +1,16 @@
+<mat-card *ngFor="let currency of currencies">
+    <mat-card-header>
+        <mat-card-title>
+            <h2>
+                {{currency.name}}
+            </h2>
+        </mat-card-title>
+        <mat-card-subtitle>{{currency.data.latestValue | currency}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-actions>
+        <button mat-raised-button color="primary">
+            LIKE
+        </button>
+        <button mat-raised-button>SHARE</button>
+    </mat-card-actions>
+</mat-card>

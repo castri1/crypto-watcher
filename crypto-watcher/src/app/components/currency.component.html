@@ -1,0 +1,15 @@
+<mat-card>
+    <div class="example-container">
+        <mat-form-field>
+            <input matInput [(ngModel)]="newCurrency.currencyName" placeholder="Enter currency name" [type]="'text'">
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput [(ngModel)]="newCurrency.pairName" placeholder="Enter currency pair name" type="text">
+        </mat-form-field>
+
+        <mat-card-actions>
+            <button mat-raised-button color="primary" (click)="saveData()">Save</button>
+        </mat-card-actions>
+    </div>
+</mat-card>
